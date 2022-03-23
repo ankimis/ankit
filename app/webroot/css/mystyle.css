@@ -1,0 +1,106 @@
+ 
+    .some-class{
+   
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+     
+}
+.bg_image{
+    background-image: url('../img/observation-urban-building-business-steel_1127-2397.jpg');
+    /* background-position: center; */
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* position: fixed; */
+    border-radius: 50%;
+    /* text-shadow: #197750; */
+    text-transform:capitalize;
+}
+ .bg3{
+    background-image: url('../img/th.jpg');
+    position: fixed;
+    HEIGHT: 90PX;
+    border-radius: 50%;
+    /* opacity: 0.1; */
+    cursor: pointer;
+    TOP: 50PX;
+    right: 90px;
+    width: 200px;
+    border: 8PX solid #73AD21;width: 100px;
+    
+
+
+}
+
+
+      
+.form-control{
+
+text-justify: 100px;
+
+}
+.bg_image:hover {opacity: 0.7;
+background-color: blanchedalmond;
+}
+
+ 
+ 
+ 
+.bg4{
+    background-color: #5beee0;
+    width: 50px;
+    right: 250px;
+    position: absolute;
+    border: 4PX solid #73AD21; 
+    /* font-weight: 500; */
+    transition-duration: 5s;
+    transition-delay: 2s;
+}
+.bg5{
+    background-color: #5beee0;
+    width: 50px;
+    right: 10px;
+    position: absolute;
+    border: 4PX solid #741977; 
+}
+.bg4:hover{
+    width: 200px;
+    background-color:royalblue;
+}
+.bg7{
+    /* background-image: url('../img/1859752012.jpg'); */
+    
+    position: absolute;
+    HEIGHT: 10PX;
+    border-radius: 50%;
+    
+    cursor: pointer;
+    TOP: 50PX;
+    right: 450px;
+    width: 10px;
+    
+    border: 2PX solid #73AD21; 
+   
+}
+.image_flu{
+    width: 50px;
+    text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+}
+.image_flu:hover{
+    column-width: 70px;
+}
+.image_flud {
+    
+    width: 50px;
+    text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+}
+.logo{
+    position: fixed;
+    right: 700px;
+    color: white;
+    z-index: +1;
+    filter: brightness(20%) blur(20px);
+
+    text-shadow: 1px 1px 2px #e63131, 0 0 25px blue, 0 0 5px darkblue;
+}

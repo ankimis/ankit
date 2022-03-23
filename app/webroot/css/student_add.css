@@ -1,0 +1,34 @@
+.s1 {
+	text-align: center;
+}
+.h1unset {
+	/* background: #fff; */
+	/* color: palevioletred; */
+	font-size: 100%;
+	width: fit-content;
+	width: 100px;
+}
+.form1{
+	width: 500px;
+	color: rgb(226, 43, 119);
+	padding: 12px 20px;
+	margin: 8px 0;
+	display: inline-block;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	box-sizing: border-box;
+}
+.button:hover {
+	background-color: brown;
+}
+.border {
+        border-style: dotted;
+      }
+.form{
+        border: 1px solid #ccc;
+        text-align: unset;
+        position: absolute;
+        right: 460px;
+        width: 700px;
+        height: 95%;
+    }
