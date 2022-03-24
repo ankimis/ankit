@@ -57,8 +57,21 @@
 <!-- <script src="sweetalert2.min.js"></script> -->
 
 <script>
-    // function myFunction() {
-        // document.getElementById("demo").innerHTML = "YOU CLICKED ME!";
+    //   swal("Are you sure you want to do this?", {
+    //   buttons: ["Oh noez!", "Aww yiss!"],
+    // });
+
+
+
+    Swal.fire({
+        title: 'Error!',
+        text: 'Do you want to continue',
+        icon: 'error',
+        confirmButtonText: 'Cool'
+    });
+
+    function myFunction() {
+        document.getElementById("demo").innerHTML = "YOU CLICKED ME!";
 
         //   const Swal = require('sweetalert2');
         const swalWithBootstrapButtons = Swal.mixin({
@@ -97,7 +110,7 @@
         })
 
 
-    // };
+    };
 </script>
 
 

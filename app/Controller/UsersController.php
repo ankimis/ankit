@@ -7,7 +7,7 @@ class UsersController extends AppController
 
 
 
-    public $helpers = array('Js');
+
     public $components = array('Session', 'flash');
     public function beforeFilter()
     {
@@ -60,7 +60,8 @@ class UsersController extends AppController
                 if ($user) {
                     $this->Session->setFlash(__('Your username is Allready  saved.'));
                 } else {
-                    if ($this->User->save($check)) {
+                    if ($this->User->save($this->request->data['User'])) {
+                        // pr($this->request->data['User']);exit;    
                         // $this->Flash->success(__('The user has been saved'));
                         $this->Session->setFlash(__('Your user has been saved.'));
                         return $this->redirect(array('action' => 'index'));
@@ -94,7 +95,7 @@ class UsersController extends AppController
             $id = $user['User']['id'];
             // pr($user);EXIT;
             $this->set('username', $username);
-            $this->set('username', $id);
+            $this->set('id', $id);
             $this->set('User', $user['User']);
         }
     }
@@ -118,24 +119,7 @@ class UsersController extends AppController
         $this->Flash->error(__('User was not deleted'));
         return $this->redirect(array('action' => 'index'));
     }
-    public function isAuthorized($user)
-    {
-        // All registered users can add posts
-        if ($this->action === 'add') {
-            return true;
-        }
-
-        // The owner of a post can edit and delete it
-        if (in_array($this->action, array('edit', 'delete'))) {
-            $studentId = (int) $this->request->params['pass'][0];
-            if ($this->Student->isOwnedBy($studentId, $user['id'])) {
-                return true;
-            }
-        }
-
-        return parent::isAuthorized($user);
-    }
-
+   
     public function forget()
     {
 
@@ -191,4 +175,5 @@ class UsersController extends AppController
             // exit;
         }
     }
-}
+}    
+    

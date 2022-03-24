@@ -32,9 +32,9 @@ class User extends AppModel {
         }
         return true;
     }
-    public function isOwnedBy($student, $user) {
+    public function isOwnedBy($user, $user) {
 
-        return $this->field('id', array('id' => $student, 'id' => $user)) !== false;
+        return $this->field('id', array('id' => $user, 'id' => $user)) !== false;
 
     }
 }
