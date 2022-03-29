@@ -41,6 +41,37 @@
 
 
 <?php $this->end(''); ?>
+<head>  
+    <title>Using JavaScript how to Create Captcha</title>  
+    <script type="text/javascript">  
+        /* Function to Generat Captcha */  
+        function GenerateCaptcha() {  
+            var chr1 = Math.ceil(Math.random() * 10) + '';  
+            var chr2 = Math.ceil(Math.random() * 10) + '';  
+            var chr3 = Math.ceil(Math.random() * 10) + '';  
+  
+            var str = new Array(4).join().replace(/(.|$)/g, function () { return ((Math.random() * 36) | 0).toString(36)[Math.random() < .5 ? "toString" : "toUpperCase"](); });  
+            var captchaCode = str + chr1 + ' ' + chr2 + ' ' + chr3;  
+            document.getElementById("txtCaptcha").value = captchaCode  
+        }  
+  
+        /* Validating Captcha Function */  
+        function ValidCaptcha() {  
+            var str1 = removeSpaces(document.getElementById('txtCaptcha').value);  
+            var str2 = removeSpaces(document.getElementById('txtCompare').value);  
+  
+            if (str1 == str2) return true;  
+            return false;  
+        }  
+  
+        /* Remove spaces from Captcha Code */  
+        function removeSpaces(string) {  
+            return string.split(' ').join('');  
+        }  
+    </script>  
+  
+</head>
+  
 <section class="h-100 gradient-form" style="background-color: #eee;">
     <div class="container py-5 h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
@@ -83,11 +114,26 @@
                                 
                                 <div class="text-center pt-1 mb-5 pb-1">
                                     <!-- <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="button">Log in</button> -->
-                                    <?php
-                                    //  echo $this->Form->end(__('Login',  ['class' => 'btn btn-primary btn-block fa-lg gradient-custom-2 mb-3'])); 
-                                    ?>
+                                     
+                                   <body onload="GenerateCaptcha();"> 
+                                   <div class="form-outline mb-4"></div> 
+                                   <div style="  width: 400px;">  
+                                        
+                                 
+                                       Enter the Captcha    
+                                       <input type="text" id="txtCompare" />  
+                                       <input type="text" id="txtCaptcha" style="text-align: center; border: none; font-weight: bold; font-size: 20px; font-family: Modern" />  
+   
+                                       <?php echo $this->Form->button('Refresh', ['class' => 'btn btn-primary btn-block fa-lg  ','style' =>'transform: skew(5deg, 2deg)','id' =>'btnrefresh','value' => 'Check' , 'onclick'=>'GenerateCaptcha()']); ?>
+                                 
+                                       <br />  
+                                       <br />  
+                                   </div>  
+                               </body> 
+                               <br />  
+                                       <br />  
 
-                                    <?php echo $this->Form->button('Login', ['class' => 'btn btn-primary btn-block fa-lg gradient-custom-2 mb-3 button','style' =>'transform: skew(5deg, 2deg)']);
+                                    <?php echo $this->Form->button('Login', ['class' => 'btn btn-primary btn-block fa-lg gradient-custom-2 mb-3 button','style' =>'transform: skew(5deg, 2deg)','id' =>'btnValid','value' => 'Check' , 'onclick'=>'alert(ValidCaptcha())']);
                                     $this->Form->end();
                                     ?>
                                     <a class="text-muted" href="forget">Forgot password?</a>

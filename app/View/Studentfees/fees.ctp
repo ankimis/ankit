@@ -28,6 +28,7 @@
     <?php
 
         echo $this->Form->input('student_id', ['label' =>false,'type' => 'hidden', 'value'=>$student_id]);
+         
         ?>
   
   <div class="mb-3">

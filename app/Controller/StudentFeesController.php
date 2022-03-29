@@ -44,14 +44,14 @@ class StudentFeesController extends AppController
       $Studentfees = $this->request->data('Studentfees');
       // $Product['modelname'] = implode(",",$Product['modelname']);
 
-     /*  pr($Studentfees);
-      exit; */
+    //  pr($Studentfees);
+    //   exit; 
 
       if ($receipt = $this->Studentfees->save($Studentfees)) {
         $this->Session->setFlash(__('Your Studentsfeesh has been saved.'));
         // pr($receipt);exit;
         // $receipt=5;
-        $this->redirect(array('action' => 'receipt', $receipt['Studentfees']['id']));
+        $this->redirect(array('action' => 'receipt', $receipt['Studentfees']['student_id']));
       }
       $this->Session->setFlash(__('Your Studentsfeesh has Not been saved.'));
     }
@@ -59,7 +59,7 @@ class StudentFeesController extends AppController
  
 
    
-  public function receipt($id = null)
+  public function receipt($student_id = null)
   {
     //   if (!$id) {
     //     pr($id);exit;
@@ -68,13 +68,13 @@ class StudentFeesController extends AppController
     // pr($id);exit;
     // $use = array ('Studentfees');
     // pr($use);exit;\
-    if (!$id) {
+    if (!$student_id) {
       throw new NotFoundException(__('Invalid Student'));
   }
  
    
 
-    $studentdata = $this->Studentfees->findById($id);
+    $studentdata = $this->Studentfees->findById($student_id);
       // pr($studentdata);
       // exit;
     // $studentdata =$this->request->data['Studentfees']['registration_feesh'];
