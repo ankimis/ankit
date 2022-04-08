@@ -52,11 +52,33 @@
   
             var str = new Array(4).join().replace(/(.|$)/g, function () { return ((Math.random() * 36) | 0).toString(36)[Math.random() < .5 ? "toString" : "toUpperCase"](); });  
             var captchaCode = str + chr1 + ' ' + chr2 + ' ' + chr3;  
-            document.getElementById("txtCaptcha").value = captchaCode  
+            document.getElementById("txtCaptcha").value = captchaCode;  
+
+            localStorage.setItem('captcha',captchaCode);
+          
+
+             
+/* 
+            const params = new FormData();
+            params.append('captchaCode', captchaCode);
+            const xhr = new XMLHttpRequest();
+            xhr.open('post', "http://localhost/ankitcake/users/captcha", true);
+            xhr.send(params); 
+            xhr.onload = (e) => {
+             var data = JSON.parse(xhr.responseText);
+
+             
+              console.log('data---->',data);
+            //return data;
+            }; */
+
+
+
         }  
   
         /* Validating Captcha Function */  
-        function ValidCaptcha() {  
+        function ValidCaptcha(e) {  
+            e.preventDefault();
             var str1 = removeSpaces(document.getElementById('txtCaptcha').value);  
             var str2 = removeSpaces(document.getElementById('txtCompare').value);  
   
@@ -67,8 +89,12 @@
         /* Remove spaces from Captcha Code */  
         function removeSpaces(string) {  
             return string.split(' ').join('');  
-        }  
-    </script>  
+        }
+             
+    </script> 
+    <?php $this->start('script'); ?>
+
+    <?php $this->end(); ?> 
   
 </head>
   
@@ -81,7 +107,7 @@
                         <div class="col-lg-6">
                             <div class="card-body p-md-5 mx-md-4">
 
-                                <div class="text-center">
+                                <div class=" animate__bounceout text-center">
                                     <!-- <img src="lotus.webp" style="width: 185px;" alt="logo"> -->
                                     <?php
                                     // <!-- <img src="1859752012.jpg" alt="Smiley face" width="42" height="42" style="float:right"> -->
@@ -96,7 +122,7 @@
                                 <?php
                                 // echo $this->Flash->render('auth'); 
                                 ?>
-                                <?php echo $this->Form->create('User'); ?>
+                                <?php echo $this->Form->create('User',['onsubmit'=>"return validateForm()" ,'class' => ' animate__bounceIn   align-items-center ']); ?>
 
                                 <div class="form-outline mb-4">
                                     <!-- <input type="email" id="form2Example11" class="form-control" placeholder="Phone number or email address"/> -->
@@ -112,7 +138,7 @@
 
 
                                 
-                                <div class="text-center pt-1 mb-5 pb-1">
+                                <div class=" text-center pt-1 mb-5 pb-1">
                                     <!-- <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="button">Log in</button> -->
                                      
                                    <body onload="GenerateCaptcha();"> 
@@ -122,9 +148,9 @@
                                  
                                        Enter the Captcha    
                                        <input type="text" id="txtCompare" />  
-                                       <input type="text" id="txtCaptcha" style="text-align: center; border: none; font-weight: bold; font-size: 20px; font-family: Modern" />  
-   
-                                       <?php echo $this->Form->button('Refresh', ['class' => 'btn btn-primary btn-block fa-lg  ','style' =>'transform: skew(5deg, 2deg)','id' =>'btnrefresh','value' => 'Check' , 'onclick'=>'GenerateCaptcha()']); ?>
+                                       <!-- <input type="text" id="txtCaptcha" style="text-align: center; border: none; font-weight: bold; font-size: 20px; font-family: Modern" />   -->
+                                       <?php echo $this->Form->input('Captcha ', array('class' => 'form-control', 'id' => 'txtCaptcha', 'style' => "text-align: center; border: none; font-weight: bold; font-size: 20px; font-family: Modern")); ?>
+                                       <?php echo $this->Form->button('Refresh', ['type'=>'button','class' => 'btn btn-primary btn-block fa-lg  ','style' =>'transform: skew(5deg, 2deg)','id' =>'btnrefresh','value' => 'Check' , 'onclick'=>'GenerateCaptcha()']); ?>
                                  
                                        <br />  
                                        <br />  
@@ -133,7 +159,7 @@
                                <br />  
                                        <br />  
 
-                                    <?php echo $this->Form->button('Login', ['class' => 'btn btn-primary btn-block fa-lg gradient-custom-2 mb-3 button','style' =>'transform: skew(5deg, 2deg)','id' =>'btnValid','value' => 'Check' , 'onclick'=>'alert(ValidCaptcha())']);
+                                    <?php echo $this->Form->button('Login', ['id'=>"loginSubmit",'class' => 'btn btn-primary btn-block fa-lg gradient-custom-2 mb-3 button','style' =>'transform: skew(5deg, 2deg)','value' => 'Check' ]);
                                     $this->Form->end();
                                     ?>
                                     <a class="text-muted" href="forget">Forgot password?</a>
@@ -189,7 +215,7 @@
               <a href="#!" class="text-white">Link 1</a>
             </li>
             <li>
-              <a href="#!" class="text-white">Link 2</a>
+              <a href="#!" class="text-white">Link 2</a>  
             </li>
             <li>
               <a href="#!" class="text-white">Link 3</a>
@@ -232,6 +258,31 @@
       <a class="text-white" href="https://mdbootstrap.com/">MDBootstrap.com</a>
     </div>
     <!-- Copyright -->
+
+
   </footer>
   <!-- Footer -->
 </section>
+
+
+<?php $this->start('script'); ?>
+<script>
+ 
+ function validateForm() {
+ 
+
+  var str1 = removeSpaces(document.getElementById('txtCaptcha').value);  
+  var str2 = removeSpaces(document.getElementById('txtCompare').value);  
+
+  if (str1 == str2){
+    return true;
+  }else{
+    alert('Enter valid CAPTCHA');
+    return false;  
+  }   
+
+
+}
+
+</script>
+<?php $this->end(''); ?>

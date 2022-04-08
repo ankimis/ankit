@@ -11,7 +11,7 @@ class StudentAttandencesController extends AppController{
 
       
       public$helpers=array('html','flash');
-      public$components=array('Session');
+      public$components=array('Session','flash');
 
     public function index(){
 
@@ -58,10 +58,11 @@ class StudentAttandencesController extends AppController{
         if (!$id) {
             throw new NotFoundException(__('Invalid student'));
         }
-        // pr($id); echo "tggfg";           
-       
+        // pr($id);exit;      
+        $this->loadModel('Studentattandence');
         $studentattandence = $this->Studentattandence->findById($id);
-        // pr($product);   
+        // pr($studentattandence); 
+        // exit;  
         if (!$studentattandence) {
             throw new NotFoundException(__('Invalid student'));
         }

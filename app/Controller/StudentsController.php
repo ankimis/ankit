@@ -22,17 +22,18 @@ class StudentsController extends AppController{
             $from_date = $this->request->data['Search']['from_date'];
             $to_date = $this->request->data['Search']['to_date'];
             $condition_array=array();
-            if($student_status != 'All'){
-                // pr($student_status);exit;
-                $condition_array['Student.student_isdelete'] = $student_status;
-            }
+            // if($student_status != 'All'){
+            //     // pr($student_status);exit;
+            //       $condition_array['Student.student_isdelete'] = $student_status;
+            // }
             
             if($student_name != ''){
-                $condition_array['Student.student_name LIKE'] ="%$student_name%";
+                 $condition_array['Student.student_name LIKE'] ="%$student_name%";
+               
             }
- 
-            $from_date= date_format(date_create($from_date),"Y-m-d H:i:s");     
-            $to_date= date_format(date_create($to_date),"Y-m-d H:i:s"); 
+            // pr($student_name);exit;
+            // $from_date= date_format(date_create($from_date),"Y-m-d H:i:s");     
+            // $to_date= date_format(date_create($to_date),"Y-m-d H:i:s"); 
             // pr($from_date);exit;
 
 
@@ -42,7 +43,7 @@ class StudentsController extends AppController{
 // ORDER BY id ASC 
             // if( $from_date != ''){
                 // $condition_array = array('Student.created  <=' => $from_date, 'Student.created  >=' => $to_date);
-                $condition_array=array('Student.created BETWEEN ? AND ?' => array($from_date, $to_date));
+                // $condition_array=array('Student.created BETWEEN ? AND ?' => array($from_date, $to_date));
                 // pr($condition_array);exit;
                 // $condition_array = array(
                 //     'Student.created' => array(
@@ -50,8 +51,9 @@ class StudentsController extends AppController{
                 //         'Student.created  <=' => $to_date
                 //     ));
             // }   
-            
+            // pr($condition_array);exit;
             $Students = $this->Student->find('all',array('conditions' => $condition_array));
+            // pr($Students);exit;
             $Search['student_name']=$student_name;
             $Search['student_isdelete']= $student_status; 
             // $Search['from_date']= $from_date; 
@@ -119,7 +121,7 @@ class StudentsController extends AppController{
             $this->Session->setFlash(__('Your student_image has Not been saved.'));  
         }
          if ($this->Student->save($Student)) {
-            $this->Session->setFlash(__('Your Student has been saved.'));
+            $this->Session->setFlash(__('Your Student has been saved.','flash_success'));
             // $this->Flash->success('Your Student has been saved.');
             return $this->redirect(array('action' => 'index'));
         }else{
@@ -208,7 +210,7 @@ class StudentsController extends AppController{
     $data['student_isdelete']=1;
         if ($this->Student->save( $data)) {
             $this->Session->setFlash(
-                __('The post with id: %s has been deleted.', h($id))
+                __('The post with id: %s has been deleted.', h($id),'flash_success')
             );
         } else {
             $this->Flash->error(

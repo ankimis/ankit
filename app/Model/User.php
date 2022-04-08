@@ -23,7 +23,8 @@ class User extends AppModel {
                 'message' => 'Please enter a valid role',
                 'allowEmpty' => false
             )
-        )
+            ) 
+                
     );
     public function beforeSave($options = array()) {
         if (isset($this->data[$this->alias]['password'])) {

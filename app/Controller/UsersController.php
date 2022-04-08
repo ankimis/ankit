@@ -12,22 +12,44 @@ class UsersController extends AppController
     public function beforeFilter()
     {
         parent::beforeFilter();
-        // Allow users to register and logout.
+        // Allow users to register and logout.  
         $this->Auth->allow('add', 'logout');
         $this->layout = 'login';
     }
     public function login()
     {
-        if ($this->request->is('post'))
-        // pr($this->request->data);exit;
-        {
+        // if ($this->request->is('post'))
+
+
+
+
+        // pr($this->request->data);exit; 
+        if ($this->request->is('post')) {
+            $recheck =  ($this->request->data['User']['Captcha ']);
+
+
             if ($this->Auth->login()) {
                 return $this->redirect($this->Auth->redirectUrl());
             }
-            // $this->Flash->error(__('Invalid username or password, try again'));
-            $this->Session->setFlash(__('You are not user please  create username and password.'));
+
+            $this->Session->setFlash(__('<span style="color:red">You are not user please  create username and password.'));
         }
+    }   
+    /* 
+    public function captcha()
+    {
+       $this->autoRender = false;
+        if ($this->request->is('post') && $this->request->data('captchaCode')) {
+            $this->Session->write('captchaCode', $this->request->data('captchaCode'));
+             
+            echo json_encode(array('status'=>1,'msg'=>'captcha set succussfly'));
+        }else{
+            echo json_encode(array('status'=>0,'msg'=>'failed to set captcha'));
+        } 
     }
+ */
+
+
 
     public function logout()
     {
@@ -119,23 +141,26 @@ class UsersController extends AppController
         $this->Flash->error(__('User was not deleted'));
         return $this->redirect(array('action' => 'index'));
     }
-   
+
     public function forget()
     {
 
         if ($this->request->is('post')) {
             $this->User->create();
             $check = ($this->request->data['User']['username']);
-            pr($check);
-            // pr($this->request->data['User']);
+            // pr($  
+            // pr($check);
+            // exit();  
+            //  ($this->request->data['User']);
             // $user = $this->User->findAllByUsername('all', array('condition' => array('User. ' => $check),'order' => array('created' => 'asc')));
-            $user = $this->User->findAllByUsername($check);
-            pr($user);
-            exit();
+            $user = $this->User->findByUsername($check);
+            // pr($user);
+            // exit();
+
             $username = $user['User']['username'];
             $password = $user['User']['password'];
             $id = $user['User']['id'];
-            //
+
 
             $this->set('username', $username);
             $this->set('password', $password);
@@ -150,8 +175,9 @@ class UsersController extends AppController
     }
     public function recreate($username)
     {
-        // pr($id);exit;
-        $forget = $this->User->find('first', array('User.username' => $username));
+        // pr($username);exit;
+        $forget = $this->User->findByUsername($username);
+        // pr($forget);exit;
         $username = $forget['User']['username'];
         $password = $forget['User']['password'];
         $id = $forget['User']['id'];
@@ -163,8 +189,8 @@ class UsersController extends AppController
         $this->set('Users', $forget['User']);
         if ($this->request->is('post') || $this->request->is('put')) {
             $confirm = $this->request->data;
-            pr($confirm);
-            exit;
+            // pr($confirm);
+            // exit;
             if ($this->User->save($this->request->data)) {
                 // $this->Flash->success(__('The user has been saved'));
                 $this->Session->setFlash(__('The user has been saved.'));
@@ -175,5 +201,4 @@ class UsersController extends AppController
             // exit;
         }
     }
-}    
-    
+}

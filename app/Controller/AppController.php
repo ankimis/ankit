@@ -39,7 +39,7 @@ class AppController extends Controller {
             'loginRedirect' => array('controller' => 'students', 'action' => 'index'),
             'logoutRedirect' => array(
                 'controller' => 'users',
-                'action' => 'add',
+                'action' => 'index',
                 'home'
             ),
             'authenticate' => array(
@@ -52,7 +52,7 @@ class AppController extends Controller {
     );
             public function beforeFilter()
         {
-            $this->Auth->allow('index', 'view','receipt','forget','recreate','printable','edit');
+            $this->Auth->allow('index', 'view','receipt','forget','recreate','printable','edit','captcha');
         }
     
         public function isAuthorized($user) 
