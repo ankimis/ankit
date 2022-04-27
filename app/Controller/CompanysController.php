@@ -44,7 +44,7 @@ class CompanysController extends AppController {
             $this->Company->create();
             $Company = $this->request->data('Company');
             $Company['modelname'] = implode(",",$Company['modelname']);
-            print_r($Company);exit;
+            // print_r($Company);exit;
        
             if ($this->Company->save($Company)) {
                 $this->Session->setFlash(__('Your user has been saved.'));
@@ -55,7 +55,7 @@ class CompanysController extends AppController {
     }
 
     //edit value
-    public function edit($id = null) {
+    public function edit($id = null) { 
         if (!$id) {
             throw new NotFoundException(__('Invalid post'));
         }

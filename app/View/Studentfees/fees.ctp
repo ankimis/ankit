@@ -1,13 +1,19 @@
 <style>
       .myform{  border: 2px solid #0d6efd;
-    padding: 31px;
+    padding: 100px;
     margin: 20px;
+    padding-top: 100px;
       }
       #content {
     position: absolute;
     right: 450px;
-    width: 500px
+    width: 500px;
+   
  
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
 }
     </style>
     <div class="card" style="width: 18rem;">

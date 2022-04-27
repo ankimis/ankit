@@ -58,6 +58,7 @@
   .card{
     transition: width 2s, height 4s;
   }
+  
 </style>
 <?php $this->end(); ?>
 
@@ -66,7 +67,7 @@
   <div class="container"> 
     <?php echo $this->Form->create('Studentattandence', ['class' => 'row gx-3 gy-2 align-items-center ']); ?>
     <div class="row justify-content-center">
-      <div class=" col-md-8 align-self-center"> 
+      <div class=" col-md-8 align-self-center"style="padding-top: 100px;"> 
         <div class="card">
           <div class="card-title text-center"><h3><?php echo date('d-m-Y H:i:s')?></h3></div>
           <div class="card-body">
