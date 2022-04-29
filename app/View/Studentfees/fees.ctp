@@ -8,7 +8,7 @@
     position: absolute;
     right: 450px;
     width: 500px;
-   
+        
  
 }
 
