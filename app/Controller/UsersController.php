@@ -15,6 +15,7 @@ class UsersController extends AppController
         // Allow users to register and logout.  
         $this->Auth->allow('add', 'logout');
         $this->layout = 'login';
+        //   $this->layout ="header";   
     }
     public function login()
     {

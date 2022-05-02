@@ -63,6 +63,7 @@ echo     $this->html->css('mystyle1');
 </head>
 
 <body>
+  
   <div id="navbar">
     <nav class=" animate__animated animate__bounceInRight navbar navbar-expand-lg navbar-dark bg-primary ">
 

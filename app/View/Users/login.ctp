@@ -259,7 +259,7 @@
 
 <section class="h-100 gradient-form" style="background-color: #eee;">
   <div class="container py-5 h-100">
-    <div class="row d-flex justify-content-center align-items-center h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100" style = "    padding: 100px;  padding-bottom: 100px;">
       <div class="col-xl-10">
         <div class="card rounded-3 text-black">
           <div class="row g-0">
@@ -293,8 +293,8 @@
                   <!-- <input type="password" id="form2Example22" class="form-control" /> -->
                   <!-- <label class="form-label" for="form2Example22">Password</label> -->
                   <?php echo $this->Form->input('password', array('class' => 'form-control', 'id' => 'passwd', 'placeholder' => "Please enter your password", 'required pattern' => "^(?=.*\d)[0-9a-zA-Z]{6,}$", 'title' => "Password should be a minimum of 6 character long and must contain at least one number", 'style' => 'background-position: right')); ?>
-                  <i class="fa fa-eye showpwd" onClick="showPwd('passwd', this)" style="margin-left: 340px; cursor: pointer;position: absolute;top: 405px;"></i>
-                </div>
+                  <i class="fa fa-eye showpwd" onClick="showPwd('passwd', this)" style="margin-left: 280px; cursor: pointer;position: absolute;top: 405px;"></i>
+             </div>
                 <div class=" text-center pt-1 mb-5 pb-1">
                   <!-- <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="button">Log in</button> -->
 
@@ -342,84 +342,7 @@
       </div>
     </div>
   </div>
-</section>
 
-<section class="">
-  <!-- Footer -->
-  <footer class="bg-secondary text-white text-center text-md-start bg-blue">
-    <!-- Grid container -->
-    <div class="container p-4">
-      <!--Grid row-->
-      <div class="row">
-        <!--Grid column-->
-        <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
-          <h5 class="text-uppercase">Footer Content</h5>
-
-          <p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste atque ea quis
-            molestias. Fugiat pariatur maxime quis culpa corporis vitae repudiandae
-            aliquam voluptatem veniam, est atque cumque eum delectus sint!
-          </p>
-        </div>
-        <!--Grid column-->
-
-        <!--Grid column-->
-        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-          <h5 class="text-uppercase">Links</h5>
-
-          <ul class="list-unstyled mb-0">
-            <li>
-              <a href="#!" class="text-white">Link 1</a>
-            </li>
-            <li>
-              <a href="#!" class="text-white">Link 2</a>
-            </li>
-            <li>
-              <a href="#!" class="text-white">Link 3</a>
-            </li>
-            <li>
-              <a href="#!" class="text-white">Link 4</a>
-            </li>
-          </ul>
-        </div>
-        <!--Grid column-->
-
-        <!--Grid column-->
-        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-          <h5 class="text-uppercase mb-0">Links</h5>
-
-          <ul class="list-unstyled">
-            <li>
-              <a href="#!" class="text-white">Link 1</a>
-            </li>
-            <li>
-              <a href="#!" class="text-white">Link 2</a>
-            </li>
-            <li>
-              <a href="#!" class="text-white">Link 3</a>
-            </li>
-            <li>
-              <a href="#!" class="text-white">Link 4</a>
-            </li>
-          </ul>
-        </div>
-        <!--Grid column-->
-      </div>
-      <!--Grid row-->
-    </div>
-    <!-- Grid container -->
-
-    <!-- Copyright -->
-    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-      © 2020 Copyright:
-      <a class="text-white" href="https://mdbootstrap.com/">MDBootstrap.com</a>
-    </div>
-    <!-- Copyright -->
-
-
-  </footer>
-  <!-- Footer -->
-</section>
 
 
 <?php $this->start('script'); ?>
